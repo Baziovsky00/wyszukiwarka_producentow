@@ -1,0 +1,40 @@
+.page{
+    padding-inline: 10px;
+}
+
+.page h1{
+    text-align: center;
+    font-size: 6em;
+    line-height: 1.02;
+    font-weight: 700;
+}
+
+.page h2 {
+    margin-top: 20px;
+    font-size: 1.4em;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.637);
+}
+
+.buttons {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 500px;
+}
+
+.buttons button {
+    width: 220px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255, 0.637);
+    border-radius: 4px;
+    font-size: 1.1em;
+    transition: 0.06s ease-in-out;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    background-color: rgba(0, 0, 0, 0.384);
+}

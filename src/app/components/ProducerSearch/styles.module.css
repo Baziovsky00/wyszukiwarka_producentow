@@ -1,0 +1,137 @@
+.allFiltersGroup {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.info {
+    margin-top: 10px;
+    color: rgb(209, 209, 209);
+    font-size: 1.2em;
+}
+
+.allFiltersGroup h3 {
+    font-size: 1.7em;
+    font-weight: 600;
+}
+
+.oneGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 450px;
+    gap: 5px;
+}
+
+.oneGroup button {
+    padding: 10px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.178);
+    width: 100%;
+    text-align: left;
+    border-radius: 4px;
+    transition: 0.06s ease-in-out;
+    cursor: pointer;
+}
+
+.selectAllBtn {
+    padding: 7px 10px;
+    background-color: rgb(33, 31, 51);
+    border: 1px solid rgba(255, 255, 255, 0.164);
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.clicked {
+    background-color: rgba(51, 156, 255, 0.76);
+    /* box-shadow: inset 0px 0px 15px rgba(255, 255, 255, 0.11); */
+}
+
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.buttons button {
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.637);
+    border-radius: 4px;
+    font-size: 1.1em;
+    transition: 0.06s ease-in-out;
+    cursor: pointer;
+}
+
+
+.searchBtn {
+    background-color: rgb(51, 157, 255);
+}
+
+.allProducentsBtn {
+    background-color: rgb(0, 68, 170);
+}
+
+
+.searchBtn button:hover {
+    background-color: rgb(0, 119, 255);
+}
+
+.allProducentsBtn:hover {
+    background-color: rgb(0, 33, 143);
+}
+
+@media screen and (max-width: 1466px) {
+    .oneGroup {
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 830px) {
+    .allFiltersGroup {
+        flex-direction: column;
+    }
+
+    .oneGroup {
+        width: 100%;
+    }
+
+    .allFiltersGroup h3 {
+        font-size: 1.4em;
+        text-align: center;
+    }
+
+    .buttons {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .buttons button {
+        font-size: 1em;
+        padding: 12px 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .allFiltersGroup {
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+    .buttons {
+        width: 95%;
+    }
+
+    .info {
+        font-size: 0.9em;
+    }
+
+    .allFiltersGroup h3 {
+        font-size: 1.2em;
+    }
+}
