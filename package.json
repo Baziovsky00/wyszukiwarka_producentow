@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "dotenv": "^16.5.0",
+    "drizzle-kit": "^0.31.1",
+    "drizzle-orm": "^0.43.1",
     "motion": "^12.12.1",
+    "mysql2": "^3.14.1",
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
