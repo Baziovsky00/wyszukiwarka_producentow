@@ -10,6 +10,7 @@ import { Suspense, useEffect, useState } from 'react';
 const SearchContent = () => {
     const [producers, setProducers] = useState<any[]>([])
     const searchParams = useSearchParams();
+    const [notFound, setNotFound] = useState(true)
 
     const regions = searchParams.getAll("regions")
     const requirements = searchParams.getAll("requirements")
@@ -21,6 +22,9 @@ const SearchContent = () => {
             body: JSON.stringify({ regions: regions, requirements: requirements, scales: scales })
         })
         const data = await response.json()
+        if(data.length === 0) {
+            setNotFound(true)
+        }
         setProducers(data)
     }
 
@@ -30,9 +34,8 @@ const SearchContent = () => {
 
     return (
         <div className={styles.page}>
-
             {
-                producers.length > 0 ?
+                producers.length > 0 &&
                     <div className={styles.producers}>
                         {
                             producers.map((producer, i) => (
@@ -54,8 +57,9 @@ const SearchContent = () => {
                             ))
                         }
                     </div >
-                    :
-                    <p className={styles.notFound}>Nie znaleziono takich producentów</p>
+            }
+            {
+                notFound && <p className={styles.notFound}>Nie znaleziono takich producentów</p>
             }
         </div >
     );
