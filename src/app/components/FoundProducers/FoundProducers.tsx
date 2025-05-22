@@ -11,6 +11,7 @@ const SearchContent = () => {
     const [producers, setProducers] = useState<any[]>([])
     const searchParams = useSearchParams();
     const [notFound, setNotFound] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     const regions = searchParams.getAll("regions")
     const requirements = searchParams.getAll("requirements")
@@ -22,9 +23,10 @@ const SearchContent = () => {
             body: JSON.stringify({ regions: regions, requirements: requirements, scales: scales })
         })
         const data = await response.json()
-        if(data.length === 0) {
+        if (data.length === 0) {
             setNotFound(true)
         }
+        setIsLoading(false)
         setProducers(data)
     }
 
@@ -35,34 +37,39 @@ const SearchContent = () => {
     return (
         <div className={styles.page}>
             {
-                producers.length > 0 &&
-                    <div className={styles.producers}>
-                        {
-                            producers.map((producer, i) => (
-                                <motion.div className={styles.producerBlock}
-                                    key={i}
-                                    initial={{ opacity: 0, y: 40 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 1.2, delay: i == 0 || i == 1 || i == 2 ? 0.3 * i : 0.3 }}>
-                                    <div className={styles.divToMove}>
-                                        <Image src={`/images/producers/${producer.nazwa}.jpg`} width={210} height={210} alt={`Producent ${producer.nazwa}`} />
-                                        <p>{producer.opis}</p>
-                                        <div className={styles.bottom}>
-                                            <h2>{producer.nazwa}</h2>
-                                            <Link href={`mailto:${producer.email}`}><FaCirclePlus /></Link>
+                !isLoading ? <div>
+                    {
+                        producers.length > 0 &&
+                        <div className={styles.producers}>
+                            {
+                                producers.map((producer, i) => (
+                                    <motion.div className={styles.producerBlock}
+                                        key={i}
+                                        initial={{ opacity: 0, y: 40 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 1.2, delay: i == 0 || i == 1 || i == 2 ? 0.3 * i : 0.3 }}>
+                                        <div className={styles.divToMove}>
+                                            <Image src={`/images/producers/${producer.nazwa}.jpg`} width={210} height={210} alt={`Producent ${producer.nazwa}`} />
+                                            <p>{producer.opis}</p>
+                                            <div className={styles.bottom}>
+                                                <h2>{producer.nazwa}</h2>
+                                                <Link href={`mailto:${producer.email}`}><FaCirclePlus /></Link>
+                                            </div>
                                         </div>
-                                    </div>
-                                </motion.div>
-                            ))
-                        }
-                    </div >
-            }
-            {
-                notFound && <p className={styles.notFound}>Nie znaleziono takich producentów</p>
-            }
-            {
-                !notFound && producers.length === 0 && <div style={{marginBottom: '800px'}}/>
+                                    </motion.div>
+                                ))
+                            }
+                        </div >
+                    }
+                    {
+                        notFound && <p className={styles.notFound}>Nie znaleziono takich producentów</p>
+                    }
+                    {
+                        !notFound && producers.length === 0 && <div style={{ marginBottom: '800px' }} />
+                    }
+                </div> :
+                    <p className={styles.notFound}>Ładowanie...</p>
             }
         </div >
     );
