@@ -1,14 +1,12 @@
 import {
   mysqlTable,
-  serial,
   varchar,
   text,
   boolean,
   datetime,
   int,
-  primaryKey,
 } from "drizzle-orm/mysql-core";
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 
 export const wojewodztwa = mysqlTable("wojewodztwa", {
   id: int().primaryKey().autoincrement(),

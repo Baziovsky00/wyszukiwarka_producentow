@@ -5,9 +5,9 @@ import { motion } from "motion/react"
 import { FaCirclePlus } from "react-icons/fa6";
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
-const FoundProducers = () => {
+const SearchContent = () => {
     const [producers, setProducers] = useState<any[]>([])
     const searchParams = useSearchParams();
 
@@ -27,40 +27,6 @@ const FoundProducers = () => {
     useEffect(() => {
         getProducers()
     }, [])
-
-    // const producers = [
-    //     {
-    //         img: '3.jpg',
-    //         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque consectetur velit ea ratione quidem amet aliquid sed eligendi modi.',
-    //         name: 'Klara Kowalska Ruczaj Sp. z o.o.',
-    //         email: ''
-    //     },
-    //     {
-    //         img: '4.jpg',
-    //         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque consectetur velit ea ratione quidem amet aliquid sed eligendi modi.',
-    //         name: 'Klara Kowalska Ruczaj Sp. z o.o.',
-    //         email: ''
-    //     },
-    //     {
-    //         img: '5.jpg',
-    //         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque consectetur velit ea ratione quidem amet aliquid sed eligendi modi.',
-    //         name: 'Klara Kowalska Ruczaj Sp. z o.o.',
-    //         email: ''
-    //     },
-    //     {
-    //         img: '6.jpg',
-    //         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque consectetur velit ea ratione quidem amet aliquid sed eligendi modi.',
-    //         name: 'Klara Kowalska Ruczaj Sp. z o.o.',
-    //         email: ''
-    //     },
-    //     {
-    //         img: '7.jpg',
-    //         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque consectetur velit ea ratione quidem amet aliquid sed eligendi modi.',
-    //         name: 'Klara Kowalska Ruczaj Sp. z o.o.',
-    //         email: ''
-    //     }
-
-    // ]
 
     return (
         <div className={styles.page}>
@@ -92,6 +58,14 @@ const FoundProducers = () => {
                     <p className={styles.notFound}>Nie znaleziono takich producentów</p>
             }
         </div >
+    );
+};
+
+const FoundProducers = () => {
+    return (
+        <Suspense fallback={<div>Ładowanie...</div>}>
+            <SearchContent />
+        </Suspense>
     );
 };
 

@@ -1,5 +1,4 @@
 import FoundProducers from '../components/FoundProducers/FoundProducers';
-import ProducerSearch from '../components/ProducerSearch/ProducerSearch';
 import styles from './styles.module.css'
 
 const Wyszukaj = () => {
