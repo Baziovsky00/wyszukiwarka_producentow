@@ -11,7 +11,7 @@ import { and, asc, eq, inArray, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 const db = drizzle(process.env.DATABASE_URL!);
 
-export const getAllProducers = async () => await db.select().from(producenci).orderBy(asc(producenci.id));
+export const getAllProducers = async () => await db.select().from(producenci).where(eq(producenci.isActive, true)).orderBy(asc(producenci.id));
 export const saveStatistics = async (data: string) => await db.insert(statystyki).values({wynik: data})
 
 type Filters = {
@@ -65,7 +65,7 @@ export async function getFilteredProducers(filters: Filters) {
       opis: producenci.opis,
       telefon: producenci.telefon,
       email: producenci.email,
-      promo: producenci.promo,
+      isActive: producenci.isActive,
       wojewodztwo: wojewodztwa.nazwa,
     })
     .from(producenci)

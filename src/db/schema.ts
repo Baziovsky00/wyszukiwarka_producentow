@@ -31,7 +31,7 @@ export const producenci = mysqlTable("producenci", {
   wojewodztwoId: int("wojewodztwo_id").references(() => wojewodztwa.id),
   telefon: varchar("telefon", { length: 30 }),
   email: varchar("email", { length: 100 }),
-  promo: boolean("promo").default(false),
+  isActive: boolean("isActive").default(false),
   createdAt: datetime("created_at")
     .notNull()
     .default(sql`now()`),
