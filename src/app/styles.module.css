@@ -1,8 +1,11 @@
-.page{
-    padding-inline: 10px;
+.page {
+    padding-inline: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.page h1{
+.page h1 {
     text-align: center;
     font-size: 6em;
     line-height: 1.02;
@@ -23,6 +26,7 @@
     justify-content: center;
     gap: 50px;
     margin-bottom: 500px;
+    flex-wrap: wrap;
 }
 
 .buttons button {
@@ -37,4 +41,43 @@
 
 .buttons button:hover {
     background-color: rgba(0, 0, 0, 0.384);
+}
+
+@media screen and (max-width: 768px) {
+    .page h1 {
+        font-size: 4em;
+    }
+
+    .page h2 {
+        font-size: 1.2em;
+    }
+
+    .buttons {
+        margin-top: 60px;
+        gap: 30px;
+
+    }
+
+    .buttons button {
+        width: 180px;
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .page {
+        padding-inline: 15px;
+    }
+
+    .buttons {
+        margin-top: 40px;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .buttons button {
+        width: 300px;
+        max-width: 280px;
+    }
 }
