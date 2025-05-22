@@ -10,7 +10,7 @@ import { Suspense, useEffect, useState } from 'react';
 const SearchContent = () => {
     const [producers, setProducers] = useState<any[]>([])
     const searchParams = useSearchParams();
-    const [notFound, setNotFound] = useState(true)
+    const [notFound, setNotFound] = useState(false)
 
     const regions = searchParams.getAll("regions")
     const requirements = searchParams.getAll("requirements")
