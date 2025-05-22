@@ -61,6 +61,9 @@ const SearchContent = () => {
             {
                 notFound && <p className={styles.notFound}>Nie znaleziono takich producentów</p>
             }
+            {
+                !notFound && producers.length === 0 && <div style={{marginBottom: '800px'}}/>
+            }
         </div >
     );
 };
